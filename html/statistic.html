@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+</head>
+<body>
+
+<canvas id="ageStatisticPieChart" width="400" height="400"></canvas>
+<canvas id="genderStatisticPieChart" width="400" height="400"></canvas>
+<script>
+    var ageCtx = document.getElementById("ageStatisticPieChart").getContext('2d');
+    var genderCtx = document.getElementById("genderStatisticPieChart").getContext('2d');
+    var ageStatisticPieChart = new Chart(ageCtx, {
+        type: 'pie',
+        data: {
+            labels: ["group[0]", "group[1]", "group[2]", "group[3]"],
+            datasets: [{
+                data: [0.25, 0.25, 0.25, 0.25],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                label: "group by age"
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+
+    var genderStatisticPieChart = new Chart(genderCtx, {
+        type: 'pie',
+        data: {
+            labels: ["Male", "Female"],
+            datasets: [{
+                data: [0.75, 0.25],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                label: "group by gender"
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/awesomeui/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/awesomeui/css/dynamicfields.css">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="/awesomeui/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form method="post">
+    <div data-role="dynamic-fields">
+        <div class="form-inline">
+            <div class="form-group">
+                <label class="sr-only" for="lasSaleDay">LastSaleDay</label>
+                <input type="number" class="form-control" id="lasSaleDay" placeholder="LastSaleDay">
+            </div>
+            <span> </span>
+            <div class="form-group">
+                <label class="sr-only" for="salesCount">Sales count</label>
+                <input type="number" class="form-control" id="salesCount" placeholder="Day of month">
+            </div>
+            <span> </span>
+            <div class="form-group">
+                <label class="sr-only" for="productId">ProductId</label>
+                <input type="number" class="form-control" id="productId" placeholder="ProductId">
+            </div>
+
+            <button class="btn btn-danger" data-role="remove">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+            <button class="btn btn-primary" data-role="add">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+
+    </div>
+
+    <button class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    $(document).on(
+        'click',
+        '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
+        function (e) {
+            e.preventDefault();
+            $(this).closest('.form-inline').remove();
+        }
+    );
+    // Add button click
+    $(document).on(
+        'click',
+        '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+        function (e) {
+            e.preventDefault();
+            var container = $(this).closest('[data-role="dynamic-fields"]');
+            new_field_group = container.children().filter('.form-inline:first-child').clone();
+            new_field_group.find('input').each(function () {
+                $(this).val('');
+            });
+            container.append(new_field_group);
+        }
+    );
+</script>
+</body>
+</html>
